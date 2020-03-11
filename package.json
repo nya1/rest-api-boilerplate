@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "typescript-rest-api",
+  "name": "rest-api-boilerplate",
   "version": "0.1.0",
   "description": "Typescript sample REST API",
   "main": "dist/src/server.js",

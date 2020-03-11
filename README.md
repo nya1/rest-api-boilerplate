@@ -14,6 +14,10 @@ Basic rest api setup to quickly bootstrap a project based on TypeScript and stab
   * Automatically reloads the server if a file changes while developing
   * Flexibile logging with winston
 
+
+The goal of this project is to provide a simple, easy to use base to build new rest apis.
+
+
 ## Configuration
 
 By default [TOML](https://github.com/toml-lang/toml#example) is used and the configuration is located here: [`config/NODE_ENV.toml`](config/development.toml)
