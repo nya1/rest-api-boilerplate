@@ -16,7 +16,7 @@ Basic rest api setup to quickly bootstrap a project based on TypeScript and stab
 
 ## Configuration
 
-By default [TOML](https://github.com/toml-lang/toml#example) is used and the configuration is located at [`config/NODE_ENV.toml`](config/dev.toml)
+By default [TOML](https://github.com/toml-lang/toml#example) is used and the configuration is located here: [`config/NODE_ENV.toml`](config/development.toml)
 
 
 ### Install
