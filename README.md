@@ -23,7 +23,11 @@ By default [TOML](https://github.com/toml-lang/toml#example) is used and the con
 
 Clone this repository
 
-`yarn install`
+`git clone git@github.com:nya1/rest-api-boilerplate.git my-project-api`
+
+Install
+
+`cd my-project-api && yarn install`
 
 ### Start local (dev) server
 
