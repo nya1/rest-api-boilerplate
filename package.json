@@ -1,0 +1,59 @@
+{
+  "private": true,
+  "name": "typescript-rest-api",
+  "version": "0.1.0",
+  "description": "Typescript sample REST API",
+  "main": "dist/src/server.js",
+  "_moduleAliases": {
+    "@src": "dist/src"
+  },
+  "scripts": {
+    "generate:openapi": "ts-node -r tsconfig-paths/register scripts/openapi-gen.ts",
+    "compile:check": "tsc --project src/tsconfig.json --noEmit",
+    "compile": "NODE_ENV=production tsc --project src/tsconfig.json",
+    "test": "NODE_ENV=development jest test --coverage",
+    "test:coverage": "NODE_ENV=development jest test --coverage; open-cli coverage/lcov-report/index.html",
+    "lint": "eslint '{src,scripts,test}/**/*.{js,ts}' --fix",
+    "serve": "NODE_ENV=development ts-node --project src/tsconfig.json -r tsconfig-paths/register src/server.ts",
+    "dev": "NODE_ENV=development nodemon -e ts,js,json,toml --exec 'yarn serve'"
+  },
+  "engines": {
+    "node": ">12.0.0"
+  },
+  "author": "nya1",
+  "license": "MIT",
+  "dependencies": {
+    "class-transformer": "^0.2.3",
+    "class-validator": "0.10.1",
+    "config": "^3.2.5",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "inversify": "^5.0.1",
+    "module-alias": "^2.2.2",
+    "routing-controllers": "^0.8.0",
+    "routing-controllers-openapi": "^1.8.0",
+    "toml": "^3.0.0",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@types/config": "^0.0.36",
+    "@types/express": "^4.17.2",
+    "@types/helmet": "^0.0.45",
+    "@types/jest": "^25.1.4",
+    "@types/node": "^13.9.0",
+    "@typescript-eslint/eslint-plugin": "^2.18.0",
+    "@typescript-eslint/parser": "^2.18.0",
+    "class-validator-jsonschema": "^1.3.1",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "jest": "^25.1.0",
+    "nodemon": "^2.0.2",
+    "open-cli": "^5.0.0",
+    "prettier": "^1.19.1",
+    "ts-jest": "^25.2.1",
+    "ts-node": "^8.6.2",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^3.7.5"
+  }
+}

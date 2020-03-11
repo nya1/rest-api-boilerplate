@@ -1,0 +1,46 @@
+{
+  "components": {
+    "schemas": {}
+  },
+  "info": {
+    "title": "",
+    "version": "1.0.0"
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/ping": {
+      "get": {
+        "operationId": "RootController.ping",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Ping",
+        "tags": [
+          "Root"
+        ]
+      }
+    },
+    "/api/tag": {
+      "get": {
+        "operationId": "RootController.tag",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Tag",
+        "tags": [
+          "Root"
+        ]
+      }
+    }
+  }
+}
