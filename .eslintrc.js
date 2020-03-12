@@ -23,7 +23,7 @@ module.exports = {
           "peerDependencies": false
         }
       ],
-      "import/order": ["error"],
+      "import/order": 1,
       "import/no-duplicates": ["error"],
     }
 };

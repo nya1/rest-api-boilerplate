@@ -1,8 +1,8 @@
 import 'reflect-metadata';
 
-// this will also load the app metadata
 import { writeFileSync } from 'fs';
 import { join } from 'path';
+// this will also load the app metadata
 import { container, routingControllersOptions } from '@src/app';
 
 import { defaultMetadataStorage } from 'class-transformer/storage';
