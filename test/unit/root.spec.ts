@@ -1,5 +1,5 @@
-import { container } from '../main';
 import { RootController } from '@src/controllers/root';
+import { container } from '../main';
 
 describe('RootController', () => {
   let rootController: RootController;

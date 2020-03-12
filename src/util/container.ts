@@ -1,6 +1,6 @@
 import { Container, interfaces } from 'inversify';
-import { AppConfig } from './config';
 import { RootController } from '@src/controllers/root';
+import { AppConfig } from './config';
 import { AppLogger } from './logger';
 
 export class AppContainer {

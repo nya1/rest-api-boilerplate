@@ -1,7 +1,7 @@
 
 # TypeScript REST API Sample
 
-Basic rest api setup to quickly bootstrap a project based on TypeScript and stable modules.
+Basic rest api setup to quickly bootstrap a project based on TypeScript and popular & maintened modules.
 
 **Features**
 

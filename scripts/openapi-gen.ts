@@ -1,6 +1,8 @@
 import 'reflect-metadata';
 
 // this will also load the app metadata
+import { writeFileSync } from 'fs';
+import { join } from 'path';
 import { container, routingControllersOptions } from '@src/app';
 
 import { defaultMetadataStorage } from 'class-transformer/storage';
@@ -8,8 +10,6 @@ import { getFromContainer, MetadataStorage } from 'class-validator';
 import { getMetadataArgsStorage } from 'routing-controllers';
 import { routingControllersToSpec } from 'routing-controllers-openapi';
 import { validationMetadatasToSchemas } from 'class-validator-jsonschema';
-import { writeFileSync } from 'fs';
-import { join } from 'path';
 import { AppLogger } from '@src/util/logger';
 
 const logger = container.get<AppLogger>(AppLogger);

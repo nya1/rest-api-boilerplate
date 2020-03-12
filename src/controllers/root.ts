@@ -1,7 +1,7 @@
 import { JsonController, Get } from 'routing-controllers';
 import { injectable, inject, named } from 'inversify';
-import packageFile from '../../package.json';
 import { AppLogger } from '@src/util/logger';
+import packageFile from '../../package.json';
 
 @JsonController('') // root
 @injectable()
