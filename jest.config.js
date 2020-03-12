@@ -1,6 +1,7 @@
 const { resolve } = require('path');
 
 module.exports = {
+  rootDir: '.',
   preset: 'ts-jest',
   testEnvironment: 'node',
   setupFiles: ['./test/setup-jest.ts'],
@@ -15,4 +16,5 @@ module.exports = {
     '!src/util/config.ts',
     '!src/util/container.ts',
   ],
+  testRegex: './test/unit/.*.ts$',
 };
