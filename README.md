@@ -10,12 +10,18 @@ Basic rest api setup to quickly bootstrap a project based on TypeScript and popu
   * Jest for tests with code coverage (text summary and HTML)
   * Dependency Injection via Inversify
   * Linter setup (ESLint + Prettier)
-  * Configuration via TOML files (thanks to [node-config](https://github.com/lorenwest/node-config))
+  * Configuration via TOML files (using [node-config](https://github.com/lorenwest/node-config))
   * Automatically reloads the server if a file changes while developing
   * Flexibile logging with winston
 
 
 The goal of this project is to provide a simple, easy to use base to build new rest apis.
+
+## Documentation
+
+ * Create controllers, middlewares, request/response: https://github.com/typestack/routing-controllers#readme
+
+ * Configuration https://github.com/lorenwest/node-config/wiki
 
 
 ## Configuration

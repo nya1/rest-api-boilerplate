@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import { useContainer, useExpressServer, RoutingControllersOptions } from 'routing-controllers';
-import { AppContainer } from '@src/util/container';
+import { AppContainer, AppIoC } from '@src/util/container';
+import { authorizationChecker, currentUserChecker } from '@src/middlewares/authorization';
 import express from 'express';
 import helmet from 'helmet';
 import { AppConfig } from './util/config';
@@ -9,10 +10,8 @@ import { AppConfig } from './util/config';
 const appContainer = new AppContainer();
 appContainer.bindAll();
 
-const appConfig = appContainer.container.get<AppConfig>(AppConfig);
-
 // set container
-useContainer(appContainer.container);
+useContainer(AppIoC);
 
 // create express app
 const expressApp = express();
@@ -21,6 +20,8 @@ expressApp.use(helmet());
 
 // base directory to load all files
 const baseDir = __dirname;
+
+const appConfig = AppIoC.get<AppConfig>(AppConfig);
 
 // routing-controllers options
 const routePrefix: string | undefined = appConfig.has('app.routePrefix')
@@ -37,9 +38,9 @@ export const routingControllersOptions: RoutingControllersOptions = {
     forbidUnknownValues: true,
     forbidNonWhitelisted: true,
   },
+  authorizationChecker,
+  currentUserChecker,
 };
 
 // add routing controller to current app
 export const app = useExpressServer(expressApp, routingControllersOptions);
-
-export const container = appContainer.container;

@@ -3,13 +3,16 @@ import { injectable, inject, named } from 'inversify';
 import { AppLogger } from '@src/util/logger';
 import packageFile from '../../package.json';
 
+/**
+ * Simple controller to ping
+ */
 @JsonController('') // root
 @injectable()
 export class RootController {
   // package version in use
   private packageVersion: string;
 
-  constructor(@inject(AppLogger) @named('Root') private logger: AppLogger) {
+  constructor(@inject(AppLogger) @named('RootController') private logger: AppLogger) {
     // take package version
     this.packageVersion = packageFile.version;
   }
