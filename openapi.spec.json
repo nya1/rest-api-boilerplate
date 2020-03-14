@@ -1,6 +1,26 @@
 {
   "components": {
-    "schemas": {}
+    "schemas": {
+      "Todo": {
+        "properties": {
+          "content": {
+            "minLength": 1,
+            "maxLength": 1024,
+            "type": "string"
+          },
+          "id": {
+            "minLength": 1,
+            "maxLength": 50,
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "content",
+          "id"
+        ]
+      }
+    }
   },
   "info": {
     "title": "",
@@ -39,6 +59,61 @@
         "summary": "Tag",
         "tags": [
           "Root"
+        ]
+      }
+    },
+    "/api/todo/{id}": {
+      "get": {
+        "operationId": "TodoController.getOne",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Get one",
+        "tags": [
+          "Todo"
+        ]
+      }
+    },
+    "/api/todo/": {
+      "post": {
+        "operationId": "TodoController.post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Todo"
+              }
+            }
+          },
+          "description": "Todo",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Post",
+        "tags": [
+          "Todo"
         ]
       }
     }

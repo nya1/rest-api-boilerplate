@@ -55,6 +55,12 @@ Will start the api on localhost (port changes based on config), it will automati
 
 Will run eslint with prettier
 
+### Generate open api spec file
+
+`yarn generate:openapi`
+
+Will generate open api spec file in the root directory `openapi.spec.json` 
+
 ---
 
 Using the following (main) modules

@@ -13,7 +13,7 @@ import { validationMetadatasToSchemas } from 'class-validator-jsonschema';
 import { AppLogger } from '@src/util/logger';
 import { AppIoC } from '@src/util/container';
 
-const logger = AppIoC.get(AppLogger);
+const logger = AppIoC.getNamed(AppLogger, 'openapi-gen');
 
 logger.info(`loading app metadata, using environment ${process.env.NODE_ENV}`);
 
