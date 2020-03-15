@@ -7,15 +7,22 @@ import { AppConfig } from './config';
  * it can be extended with multiple transports
  */
 class WinstonLoggerFactory {
-  public createLogger(appName: string, innerLabel: string | undefined) {
+  public createLogger(
+    appName: string,
+    version: string,
+    env: string,
+    innerLabel: string | undefined,
+  ) {
     const localFormat = format.printf(info => {
-      return `${info.timestamp} [${info.service}]${info.label ? '[' + info.label + ']' : ''} ${info.level}: ${
-        info.message
-      } ${info.meta && info.meta.length ? JSON.stringify(info.meta, null, 2) : ''}`;
+      return `${info.timestamp} [${info.service}]${info.label ? '[' + info.label + ']' : ''} ${
+        info.level
+      }: ${info.message} ${
+        info.meta && info.meta.length ? JSON.stringify(info.meta, null, 2) : ''
+      }`;
     });
 
     return createLogger({
-      defaultMeta: { service: appName },
+      defaultMeta: { service: appName, 'tag:env': env, 'tag:version': version },
       format: format.json(),
       transports: [
         new transports.Console({
@@ -47,7 +54,9 @@ export class AppLogger {
       throw new Error('Expected app.name');
     }
 
-    this.logger = this.loggerFactory.createLogger(appName, callerName);
+    const version = this.config.version;
+    const currentEnv = this.config.env;
+    this.logger = this.loggerFactory.createLogger(appName, version, currentEnv, callerName);
   }
 
   public debug(msg: string, ...meta: any[]) {
