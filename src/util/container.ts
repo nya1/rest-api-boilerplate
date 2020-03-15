@@ -7,6 +7,9 @@ import { AppLogger } from './logger';
 
 export const AppIoC = new Container({ defaultScope: 'Singleton' });
 
+/**
+ * Container
+ */
 export class AppContainer {
   public container: Container;
 
@@ -34,7 +37,7 @@ export class AppContainer {
     // config
     this.container.bind(AppConfig).toSelf();
 
-    // logger bind and allow named binding to add more context to logger
+    // logger bind and allow named binding to add more context to the logger
     this.container
       .bind(AppLogger)
       .toDynamicValue((context: interfaces.Context) => {
@@ -50,6 +53,7 @@ export class AppContainer {
    * bind controllers
    */
   private bindControllers() {
+    // https://stackoverflow.com/questions/50328582/how-to-dynamically-bind-a-dynamically-imported-type
     this.container.bind(RootController).toSelf();
     this.container.bind(TodoController).toSelf();
   }

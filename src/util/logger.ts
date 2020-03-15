@@ -80,6 +80,7 @@ export class AppLogger {
   private loggerFactory: WinstonLoggerFactory;
 
   constructor(@inject(AppConfig) private config: AppConfig, callerName: string | undefined) {
+    // create logger instance
     this.loggerFactory = new WinstonLoggerFactory(config);
     this.logger = this.loggerFactory.createLogger(callerName);
   }

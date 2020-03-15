@@ -25,6 +25,6 @@ module.exports = {
       ],
       "import/order": 1,
       "import/no-duplicates": ["error"],
-      "max-len": ["error", { "code": 100 }],
+      "max-len": ["error", { "code": 100, "ignoreComments": true }],
     }
 };
