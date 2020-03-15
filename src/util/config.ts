@@ -7,26 +7,39 @@ import packageFile from '../../package.json';
  * allows to inject the configuration
  */
 @injectable()
-export class AppConfig {
+export class AppConfig implements IConfig {
   private config: IConfig;
 
   constructor() {
     this.config = globalConfig;
   }
 
+  /**
+   * package.json version (app version)
+   */
   get version() {
     return packageFile.version;
   }
 
+  /**
+   * current NODE_ENV value
+   */
   get env() {
     return this.util.getEnv('NODE_ENV');
+  }
+
+  /**
+   * if is running in development mode
+   */
+  get isDev() {
+    return this.env.startsWith('dev');
   }
 
   public has(dotNotationParam: string) {
     return this.config.has(dotNotationParam);
   }
 
-  public get(dotNotationParam: string) {
+  public get<T>(dotNotationParam: string): T {
     return this.config.get(dotNotationParam);
   }
 

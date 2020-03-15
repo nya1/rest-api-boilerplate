@@ -7,24 +7,38 @@ import { AppConfig } from './config';
  * it can be extended with multiple transports
  */
 class WinstonLoggerFactory {
-  public createLogger(
-    appName: string,
-    version: string,
-    env: string,
-    innerLabel: string | undefined,
-  ) {
-    const localFormat = format.printf(info => {
-      return `${info.timestamp} [${info.service}]${info.label ? '[' + info.label + ']' : ''} ${
-        info.level
-      }: ${info.message} ${
-        info.meta && info.meta.length ? JSON.stringify(info.meta, null, 2) : ''
-      }`;
+  private appName: string;
+  private version: string;
+  private currentEnv: string;
+
+  constructor(@inject(AppConfig) private config: AppConfig) {
+    const appName = this.config.get('app.name');
+    if (typeof appName !== 'string') {
+      throw new Error('Expected app.name');
+    }
+    this.appName = appName;
+
+    this.version = this.config.version;
+
+    this.currentEnv = this.config.env;
+  }
+
+  public createLogger(innerLabel: string | undefined) {
+    const loggerInstance = createLogger({
+      // default metadata, can be easily indexed
+      defaultMeta: {
+        service: this.appName,
+        'tag:env': this.currentEnv,
+        'tag:version': this.version,
+      },
+      format: format.json(),
+      transports: [],
     });
 
-    return createLogger({
-      defaultMeta: { service: appName, 'tag:env': env, 'tag:version': version },
-      format: format.json(),
-      transports: [
+    // add transport based on env
+    if (this.config.isDev) {
+      // will log to console
+      loggerInstance.add(
         new transports.Console({
           level: 'debug',
           format: format.combine(
@@ -32,10 +46,27 @@ class WinstonLoggerFactory {
             format.timestamp(),
             format.colorize(),
             format.prettyPrint(),
-            localFormat,
+            this.localFormat(),
           ),
         }),
-      ],
+      );
+    } else {
+      // here you can add transports for staging/production use
+    }
+
+    return loggerInstance;
+  }
+
+  /**
+   * winston formatter for local use (will print to console)
+   */
+  private localFormat() {
+    return format.printf(info => {
+      return `${info.timestamp} [${info.service}]${info.label ? '[' + info.label + ']' : ''} ${
+        info.level
+      }: ${info.message} ${
+        info.meta && info.meta.length ? JSON.stringify(info.meta, null, 2) : ''
+      }`;
     });
   }
 }
@@ -46,17 +77,11 @@ class WinstonLoggerFactory {
 @injectable()
 export class AppLogger {
   private logger: WinstonLogger;
-  private loggerFactory = new WinstonLoggerFactory();
+  private loggerFactory: WinstonLoggerFactory;
 
   constructor(@inject(AppConfig) private config: AppConfig, callerName: string | undefined) {
-    const appName = this.config.get('app.name');
-    if (typeof appName !== 'string') {
-      throw new Error('Expected app.name');
-    }
-
-    const version = this.config.version;
-    const currentEnv = this.config.env;
-    this.logger = this.loggerFactory.createLogger(appName, version, currentEnv, callerName);
+    this.loggerFactory = new WinstonLoggerFactory(config);
+    this.logger = this.loggerFactory.createLogger(callerName);
   }
 
   public debug(msg: string, ...meta: any[]) {
