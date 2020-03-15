@@ -38,6 +38,7 @@ export const routingControllersOptions: RoutingControllersOptions = {
     forbidUnknownValues: true,
     forbidNonWhitelisted: true,
   },
+  development: appConfig.isDev,
   authorizationChecker,
   currentUserChecker,
 };

@@ -34,18 +34,18 @@ describe('TodoController', () => {
     expect(res.count).toEqual(0);
   });
 
-  it('create one todo', () => {
+  it('create todo', () => {
     expect.assertions(1);
 
-    const todoExampleCopy: any = Object.assign({}, todoExample);
-    const res = todoController.post(todoExampleCopy); // clone object
+    const todoExampleCopy: typeof todoExample = Object.assign({}, todoExample);
+    const res = todoController.post(todoExampleCopy);
     expect(res).toMatchObject(todoExample);
   });
 
   it('get one should return todo created before', () => {
     expect.assertions(1);
 
-    const todoRes = todoController.getOne(todoExample.id);
+    const todoRes: typeof todoExample = todoController.getOne(todoExample.id);
 
     expect(todoRes).toMatchObject(todoExample);
   });
@@ -53,7 +53,7 @@ describe('TodoController', () => {
   it('creation of todo with same id should fail with 400 bad error', () => {
     expect.assertions(1);
 
-    const todoExampleCopy: any = Object.assign({}, todoExample);
+    const todoExampleCopy: typeof todoExample = Object.assign({}, todoExample);
     expect(() => todoController.post(todoExampleCopy)).toThrowError(BadRequestError);
   });
 

@@ -24,14 +24,14 @@ export class AppConfig implements IConfig {
   /**
    * current NODE_ENV value
    */
-  get env() {
+  get env(): string {
     return this.util.getEnv('NODE_ENV');
   }
 
   /**
    * if is running in development mode
    */
-  get isDev() {
+  get isDev(): boolean {
     return this.env.startsWith('dev');
   }
 

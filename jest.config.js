@@ -8,6 +8,11 @@ module.exports = {
   moduleNameMapper: {
     '^@src/(.*)$': resolve(__dirname, './src/$1'),
   },
+  globals: {
+    'ts-jest': {
+      tsConfig: '<rootDir>/tsconfig.json',
+    },
+  },
   collectCoverageFrom: [
     'src/**/*.{js,ts}',
     '!src/app.ts',
