@@ -8,7 +8,7 @@
     "@src": "dist/src"
   },
   "scripts": {
-    "generate:openapi": "ts-node -r tsconfig-paths/register scripts/openapi-gen.ts",
+    "openapi:generate": "ts-node -r tsconfig-paths/register scripts/openapi-gen.ts",
     "compile:check": "tsc --noEmit",
     "build": "NODE_ENV=production rm -rf dist && tsc --project src/tsconfig.json",
     "test": "NODE_ENV=development jest --coverage",

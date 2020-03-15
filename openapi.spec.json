@@ -90,6 +90,21 @@
       }
     },
     "/api/todo/": {
+      "get": {
+        "operationId": "TodoController.getAll",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {}
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Get all",
+        "tags": [
+          "Todo"
+        ]
+      },
       "post": {
         "operationId": "TodoController.post",
         "requestBody": {

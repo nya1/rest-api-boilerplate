@@ -49,6 +49,12 @@ Will start the api on localhost (port changes based on config), it will automati
 
 `yarn test`
 
+Will run unit and integration tests
+
+`yarn test:coverage`
+
+Will run unit and integration tests and open the default browser with the HTML reporter
+
 ### Linting
 
 `yarn lint`
@@ -57,7 +63,7 @@ Will run eslint with prettier
 
 ### Generate open api spec file
 
-`yarn generate:openapi`
+`yarn openapi:generate`
 
 Will generate open api spec file in the root directory `openapi.spec.json` 
 

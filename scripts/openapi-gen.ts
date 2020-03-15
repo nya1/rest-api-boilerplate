@@ -12,10 +12,12 @@ import { routingControllersToSpec } from 'routing-controllers-openapi';
 import { validationMetadatasToSchemas } from 'class-validator-jsonschema';
 import { AppLogger } from '@src/util/logger';
 import { AppIoC } from '@src/util/container';
+import { AppConfig } from '@src/util/config';
 
 const logger = AppIoC.getNamed(AppLogger, 'openapi-gen');
+const config = AppIoC.get(AppConfig);
 
-logger.info(`loading app metadata, using environment ${process.env.NODE_ENV}`);
+logger.info(`loading app metadata, using environment ${config.env}`);
 
 const metadatas = (getFromContainer(MetadataStorage) as any).validationMetadatas;
 const schemas = validationMetadatasToSchemas(metadatas, {

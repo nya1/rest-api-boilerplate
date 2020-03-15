@@ -32,6 +32,18 @@ export class TodoController {
   }
 
   /**
+   * List all todo
+   */
+  @Get('/')
+  getAll() {
+    const todoList = this.service.listAll();
+    return {
+      result: todoList,
+      count: todoList.length,
+    };
+  }
+
+  /**
    * Allow to create one todo
    * body is automatically validated thanks to @Body decorator and
    * the Todo class

@@ -56,4 +56,11 @@ export class TodoService {
     this.logger.debug('found todo', { todo: todoRes });
     return todoRes;
   }
+
+  /**
+   * return all todo
+   */
+  public listAll(): Todo[] {
+    return this.todoStorage;
+  }
 }
