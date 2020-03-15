@@ -1,7 +1,8 @@
 import { JsonController, Get, Param, NotFoundError, Post, Body } from 'routing-controllers';
 import { injectable, inject, named } from 'inversify';
 import { AppLogger } from '@src/util/logger';
-import { Todo, TodoService } from '@src/services/todo';
+import { TodoService } from '@src/services/todo';
+import { TodoNewRequest } from '@src/entities/todo';
 
 /**
  * todo example controller
@@ -50,7 +51,7 @@ export class TodoController {
    * @param todoToAdd todo json body
    */
   @Post('/')
-  post(@Body({ required: true }) todoToAdd: Todo) {
+  post(@Body({ required: true }) todoToAdd: TodoNewRequest) {
     return this.service.add(todoToAdd);
   }
 }

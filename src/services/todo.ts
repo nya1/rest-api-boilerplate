@@ -1,20 +1,8 @@
-import { IsString, Length } from 'class-validator';
 import { inject, named, injectable } from 'inversify';
 import { AppLogger } from '@src/util/logger';
 import { BadRequestError } from 'routing-controllers';
-
-export class Todo {
-  @IsString()
-  @Length(1, 1024)
-  readonly content!: string;
-
-  @IsString()
-  @Length(1, 50)
-  readonly id!: string;
-
-  public createdBy!: string;
-  public createdAt!: Date;
-}
+import { Todo } from '@src/models/todo';
+import { TodoNewRequest } from '@src/entities/todo';
 
 /**
  * service class for Todo operations
@@ -29,7 +17,7 @@ export class TodoService {
   /**
    * add one todo to sample storage
    */
-  public add(todoToAdd: Todo) {
+  public add(todoToAdd: TodoNewRequest) {
     this.logger.debug(`got a new todo to add`, { todo: todoToAdd });
     // check if same todo id exists
     const id = todoToAdd.id;
@@ -38,11 +26,11 @@ export class TodoService {
       throw new BadRequestError(`duplicate todo id found ${id}`);
     }
 
-    // set creation date
-    todoToAdd.createdAt = new Date();
+    // create todo class from request
+    const newTodo = Todo.create(todoToAdd);
 
     // add to sample db
-    this.todoStorage.push(todoToAdd);
+    this.todoStorage.push(newTodo);
 
     return todoToAdd;
   }
