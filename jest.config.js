@@ -22,5 +22,4 @@ module.exports = {
     '!src/util/config.ts',
     '!src/util/container.ts',
   ],
-  testRegex: './test/unit/.*.ts$',
 };

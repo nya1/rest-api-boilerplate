@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { app } from '@src/app';
 import { AppConfig } from '@src/util/config';
 import { AppIoC } from '@src/util/container';

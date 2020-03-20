@@ -2,4 +2,4 @@
 name = 'rest-api-sample'
 port = 3000
 # global route prefix
-routePrefix = '/api'
+# routePrefix = '/api'

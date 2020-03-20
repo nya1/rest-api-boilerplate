@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import { useContainer, useExpressServer, RoutingControllersOptions } from 'routing-controllers';
 import { AppContainer, AppIoC } from '@src/util/container';
 import { authorizationChecker, currentUserChecker } from '@src/middlewares/authorization';
