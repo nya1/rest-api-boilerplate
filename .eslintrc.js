@@ -6,7 +6,8 @@ module.exports = {
       "plugin:prettier/recommended" // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
     ],
     plugins: [
-      "import"
+      "import",
+      "no-only-tests"
     ],
     parserOptions: {
       ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
@@ -26,5 +27,6 @@ module.exports = {
       "import/order": 1,
       "import/no-duplicates": ["error"],
       "max-len": ["error", { "code": 100, "ignoreComments": true }],
+      "no-only-tests/no-only-tests": "error",
     }
 };
