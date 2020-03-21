@@ -1,6 +1,12 @@
 
 # TypeScript REST API Sample
 
+<p align="center">
+  <img src="https://github.com/nya1/rest-api-boilerplate/workflows/test%20&%20build/badge.svg">
+  &nbsp;
+  <img src="https://david-dm.org/nya1/rest-api-boilerplate/status.svg">
+</p>
+
 Basic rest api setup to quickly bootstrap a project based on TypeScript and popular & maintened modules.
 
 **Features**
