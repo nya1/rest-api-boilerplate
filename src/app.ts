@@ -14,7 +14,9 @@ useContainer(AppIoC);
 
 // create express app
 const expressApp = express();
-// add helmet
+
+// attach basic security middlewares
+// helmet
 expressApp.use(helmet());
 
 // base directory to load all files

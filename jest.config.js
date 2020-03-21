@@ -1,7 +1,6 @@
 const { resolve } = require('path');
 
 module.exports = {
-  rootDir: '.',
   preset: 'ts-jest',
   testEnvironment: 'node',
   setupFiles: ['./test/setup-jest.ts'],

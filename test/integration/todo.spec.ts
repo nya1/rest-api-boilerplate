@@ -23,6 +23,44 @@ describe('Todo', () => {
     expect(res.body.result).toHaveLength(0);
   });
 
+  it('fail to create todo - no body', async () => {
+    expect.assertions(1);
+
+    const res = await request(app).post('/todo');
+
+    expect(res.status).toEqual(400);
+  });
+
+  it('fail to create todo - random body', async () => {
+    expect.assertions(1);
+
+    const res = await request(app)
+      .post('/todo')
+      .send({ test: 'ok' });
+
+    expect(res.status).toEqual(400);
+  });
+
+  it('fail to create todo - invalid body', async () => {
+    expect.assertions(1);
+
+    const res = await request(app)
+      .post('/todo')
+      .send({ test: 'ok', ...todoExample });
+
+    expect(res.status).toEqual(400);
+  });
+
+  it('fail to create todo - invalid body', async () => {
+    expect.assertions(1);
+
+    const res = await request(app)
+      .post('/todo')
+      .send({ id: 'ok' });
+
+    expect(res.status).toEqual(400);
+  });
+
   it('create todo', async () => {
     expect.assertions(2);
 

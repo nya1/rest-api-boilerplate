@@ -12,7 +12,7 @@ Basic rest api setup to quickly bootstrap a project based on TypeScript and popu
 **Features**
 
   * Use decorators to describe endpoints and middlewares (thanks to [routing-controllers](https://github.com/typestack/routing-controllers))
-  * Automatically create a OpenAPI v3 (swagger) file with minimal effort (based on decorators used)
+  * Automatically create a OpenAPI v3 (swagger) file with minimal effort (based on decorators used - thanks to [routing-controllers-openapi](https://github.com/epiphone/routing-controllers-openapi))
   * Jest for tests with code coverage (text summary and HTML)
   * Dependency Injection via Inversify
   * Linter setup (ESLint + Prettier)
@@ -75,7 +75,7 @@ Will generate open api spec file in the root directory `openapi.spec.json`
 
 ---
 
-Using the following (main) modules
+Using the following prod modules
 
  * [routing-controllers](https://github.com/typestack/routing-controllers)
 
@@ -92,10 +92,6 @@ Using the following (main) modules
  * [routing-controllers-openapi](https://github.com/epiphone/routing-controllers-openapi)
   
    * Allow to describe an OpenAPI spec file by using decorators
-
- * [nodemon](https://github.com/remy/nodemon)
-  
-   * Watch files and restart the server in dev mode
 
  * [winston](https://github.com/winstonjs/winston)
   
