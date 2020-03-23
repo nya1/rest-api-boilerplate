@@ -30,6 +30,7 @@ const routePrefix: string | undefined = appConfig.has('app.routePrefix')
   : undefined;
 export const routingControllersOptions: RoutingControllersOptions = {
   routePrefix,
+  cors: true,
   // controllers and middlewares location
   controllers: [baseDir + '/controllers/*.{js,ts}'],
   middlewares: [baseDir + '/middlewares/*.{js,ts}'],

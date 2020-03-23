@@ -14,6 +14,7 @@ Basic rest api setup to quickly bootstrap a project based on TypeScript and popu
   * Use decorators to describe endpoints and middlewares (thanks to [routing-controllers](https://github.com/typestack/routing-controllers))
   * Automatically create a OpenAPI v3 (swagger) file with minimal effort (based on decorators used - thanks to [routing-controllers-openapi](https://github.com/epiphone/routing-controllers-openapi))
   * Jest for tests with code coverage (text summary and HTML)
+  * Unit and integration tests setup, integration tests can be run also against compiled JS code
   * Dependency Injection via Inversify
   * Linter setup (ESLint + Prettier)
   * Configuration via TOML files (using [node-config](https://github.com/lorenwest/node-config))
@@ -55,11 +56,27 @@ Will start the api on localhost (port changes based on config), it will automati
 
 `yarn test`
 
-Will run unit and integration tests
+Will run unit and integration tests (typescript)
+
+`yarn test:ci`
+
+Will run unit and integration tests against typescript and compiled javascript server
 
 `yarn test:coverage`
 
-Will run unit and integration tests and open the default browser with the HTML reporter
+Will run unit and integration tests and open the default browser with the HTML coverage reporter
+
+`yarn test:unit`
+
+Run only unit tests
+
+`yarn test:integration`
+
+Run only integration tests (typescript)
+
+`yarn test:integration:js`
+
+Run integration tests against compiled javascript server
 
 ### Linting
 

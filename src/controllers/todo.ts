@@ -1,4 +1,12 @@
-import { JsonController, Get, Param, NotFoundError, Post, Body } from 'routing-controllers';
+import {
+  JsonController,
+  Get,
+  Param,
+  NotFoundError,
+  Post,
+  Body,
+  Authorized,
+} from 'routing-controllers';
 import { injectable, inject, named } from 'inversify';
 import { AppLogger } from '@src/util/logger';
 import { TodoService } from '@src/services/todo';
@@ -48,9 +56,11 @@ export class TodoController {
    * Allow to create one todo
    * body is automatically validated thanks to @Body decorator and
    * the Todo class
+   * requires authentication
    * @param todoToAdd todo json body
    */
   @Post('/')
+  @Authorized()
   post(@Body({ required: true }) todoToAdd: TodoNewRequest) {
     return this.service.add(todoToAdd);
   }
