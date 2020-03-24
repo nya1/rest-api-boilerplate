@@ -34,10 +34,7 @@ describe('Todo', () => {
   it('fail to create todo - random body', async () => {
     expect.assertions(1);
 
-    const res = await request
-      .post('/todo')
-      .send({ test: 'ok' })
-      .set(authHeader);
+    const res = await request.post('/todo').send({ test: 'ok' }).set(authHeader);
 
     expect(res.status).toEqual(400);
   });
@@ -56,10 +53,7 @@ describe('Todo', () => {
   it('fail to create todo - invalid body', async () => {
     expect.assertions(1);
 
-    const res = await request
-      .post('/todo')
-      .send({ id: 'ok' })
-      .set(authHeader);
+    const res = await request.post('/todo').send({ id: 'ok' }).set(authHeader);
 
     expect(res.status).toEqual(400);
   });
@@ -67,10 +61,7 @@ describe('Todo', () => {
   it('create todo', async () => {
     expect.assertions(2);
 
-    const res = await request
-      .post('/todo')
-      .send(todoExample)
-      .set(authHeader);
+    const res = await request.post('/todo').send(todoExample).set(authHeader);
 
     expect(res.status).toEqual(200);
     expect(res.body).toMatchObject(todoExample);
@@ -88,10 +79,7 @@ describe('Todo', () => {
   it('creation of todo with same id should fail with 400 bad error', async () => {
     expect.assertions(1);
 
-    const res = await request
-      .post('/todo')
-      .send(todoExample)
-      .set(authHeader);
+    const res = await request.post('/todo').send(todoExample).set(authHeader);
 
     expect(res.status).toEqual(400);
   });

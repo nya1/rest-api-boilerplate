@@ -40,7 +40,7 @@ export class TodoService {
    */
   public getById(id: string): Todo | undefined {
     this.logger.debug(`looking up ${id} todo`);
-    const todoRes = this.todoStorage.find(thisTodo => thisTodo.id === id);
+    const todoRes = this.todoStorage.find((thisTodo) => thisTodo.id === id);
     this.logger.debug('found todo', { todo: todoRes });
     return todoRes;
   }

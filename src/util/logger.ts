@@ -61,7 +61,7 @@ class WinstonLoggerFactory {
    * winston formatter for local use (will print to console)
    */
   private localFormat() {
-    return format.printf(info => {
+    return format.printf((info) => {
       return `${info.timestamp} [${info.service}]${info.label ? '[' + info.label + ']' : ''} ${
         info.level
       }: ${info.message} ${
