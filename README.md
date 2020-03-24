@@ -2,9 +2,11 @@
 # TypeScript REST API Sample
 
 <p align="center">
-  <img src="https://github.com/nya1/rest-api-boilerplate/workflows/test%20&%20build/badge.svg">
+  <a href="https://github.com/nya1/rest-api-boilerplate/actions" target="_blank"><img src="https://github.com/nya1/rest-api-boilerplate/workflows/test%20&%20build/badge.svg"></a>
   &nbsp;
-  <img src="https://david-dm.org/nya1/rest-api-boilerplate/status.svg">
+  <a href="https://david-dm.org/nya1/rest-api-boilerplate" target="_blank" ><img src="https://david-dm.org/nya1/rest-api-boilerplate/status.svg"></a>
+  &nbsp;
+  <a href="https://david-dm.org/nya1/rest-api-boilerplate?type=dev" target="_blank" ><img src="https://david-dm.org/nya1/rest-api-boilerplate/dev-status.svg"></a>
 </p>
 
 Basic rest api setup to quickly bootstrap a project based on TypeScript and popular & maintened modules.
