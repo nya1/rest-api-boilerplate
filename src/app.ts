@@ -1,6 +1,7 @@
 import { useContainer, useExpressServer, RoutingControllersOptions } from 'routing-controllers';
 import { AppContainer, AppIoC } from '@src/util/container';
 import { authorizationChecker, currentUserChecker } from '@src/middlewares/authorization';
+import { CustomErrorHandler } from '@src/middlewares/error-handler';
 import express from 'express';
 import helmet from 'helmet';
 import { AppConfig } from './util/config';
@@ -33,7 +34,9 @@ export const routingControllersOptions: RoutingControllersOptions = {
   cors: true,
   // controllers and middlewares location
   controllers: [baseDir + '/controllers/*.{js,ts}'],
-  middlewares: [baseDir + '/middlewares/*.{js,ts}'],
+  middlewares: [
+    CustomErrorHandler, // this should be always the last
+  ],
   // class validator options
   validation: {
     whitelist: true,
@@ -43,6 +46,7 @@ export const routingControllersOptions: RoutingControllersOptions = {
   development: appConfig.isDev,
   authorizationChecker,
   currentUserChecker,
+  defaultErrorHandler: false,
 };
 
 // add routing controller to current app

@@ -2,6 +2,7 @@ import { Container, interfaces } from 'inversify';
 import { RootController } from '@src/controllers/root';
 import { TodoController } from '@src/controllers/todo';
 import { TodoService } from '@src/services/todo';
+import { CustomErrorHandler } from '@src/middlewares/error-handler';
 import { AppConfig } from './config';
 import { AppLogger } from './logger';
 
@@ -26,6 +27,7 @@ export class AppContainer {
    */
   public bindAll() {
     this.bindUtils();
+    this.bindMiddlewares();
     this.bindServices();
     this.bindControllers();
   }
@@ -47,6 +49,10 @@ export class AppContainer {
         return new AppLogger(config, named);
       })
       .inTransientScope();
+  }
+
+  private bindMiddlewares() {
+    this.container.bind(CustomErrorHandler).toSelf();
   }
 
   /**
