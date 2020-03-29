@@ -29,10 +29,17 @@ export class AppConfig implements IConfig {
   }
 
   /**
-   * if is running in development mode
+   * if is running in development
    */
   get isDev(): boolean {
     return this.env.startsWith('dev');
+  }
+
+  /**
+   * if is running in production
+   */
+  get isProd(): boolean {
+    return this.env.startsWith('prod');
   }
 
   public has(dotNotationParam: string) {

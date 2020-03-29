@@ -1,7 +1,6 @@
 import { useContainer, useExpressServer, RoutingControllersOptions } from 'routing-controllers';
 import { AppContainer, AppIoC } from '@src/util/container';
 import { authorizationChecker, currentUserChecker } from '@src/middlewares/authorization';
-import { CustomErrorHandler } from '@src/middlewares/error-handler';
 import express from 'express';
 import helmet from 'helmet';
 import { AppConfig } from './util/config';
