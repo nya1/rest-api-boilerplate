@@ -11,6 +11,8 @@ import { injectable, inject, named } from 'inversify';
 import { AppLogger } from '@src/util/logger';
 import { TodoService } from '@src/services/todo';
 import { TodoNewRequest } from '@src/entities/todo';
+import { ResponseSchema } from 'routing-controllers-openapi';
+import { Todo } from '@src/models/todo';
 
 /**
  * todo example controller
@@ -29,6 +31,7 @@ export class TodoController {
    * @param id todo ID
    */
   @Get('/:id')
+  @ResponseSchema(Todo, { statusCode: 200 })
   getOne(@Param('id') id: string) {
     // search todo by id
     const foundTodo = this.service.getById(id);
@@ -36,6 +39,7 @@ export class TodoController {
     if (!foundTodo) {
       throw new NotFoundError('todo provided not found');
     }
+
     // at this point todo is found
     return foundTodo;
   }

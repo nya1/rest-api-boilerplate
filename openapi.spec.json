@@ -4,14 +4,33 @@
       "Todo": {
         "properties": {
           "content": {
-            "minLength": 1,
-            "maxLength": 1024,
             "type": "string"
           },
           "id": {
-            "minLength": 1,
-            "maxLength": 50,
             "type": "string"
+          },
+          "createdBy": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "content",
+          "id",
+          "createdBy"
+        ]
+      },
+      "TodoNewRequest": {
+        "properties": {
+          "content": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          },
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50
           }
         },
         "type": "object",
@@ -28,7 +47,7 @@
   },
   "openapi": "3.0.0",
   "paths": {
-    "/api/ping": {
+    "/ping": {
       "get": {
         "operationId": "RootController.ping",
         "responses": {
@@ -45,7 +64,7 @@
         ]
       }
     },
-    "/api/tag": {
+    "/tag": {
       "get": {
         "operationId": "RootController.tag",
         "responses": {
@@ -62,7 +81,7 @@
         ]
       }
     },
-    "/api/todo/{id}": {
+    "/todo/{id}": {
       "get": {
         "operationId": "TodoController.getOne",
         "parameters": [
@@ -78,9 +97,13 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {}
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Todo"
+                }
+              }
             },
-            "description": "Successful response"
+            "description": ""
           }
         },
         "summary": "Get one",
@@ -89,7 +112,7 @@
         ]
       }
     },
-    "/api/todo/": {
+    "/todo/": {
       "get": {
         "operationId": "TodoController.getAll",
         "responses": {
@@ -111,11 +134,11 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Todo"
+                "$ref": "#/components/schemas/TodoNewRequest"
               }
             }
           },
-          "description": "Todo",
+          "description": "TodoNewRequest",
           "required": true
         },
         "responses": {

@@ -68,7 +68,7 @@ export class CustomErrorHandler implements ExpressErrorMiddlewareInterface {
       jsonResponse.stack = error.stack;
     }
 
-    this.logger.info('response', jsonResponse);
+    this.logger.info(`response with status code ${statusCode}`, jsonResponse);
     response.status(statusCode).json(jsonResponse);
   }
 }
