@@ -34,9 +34,7 @@ export const routingControllersOptions: RoutingControllersOptions = {
   cors: true,
   // controllers and middlewares location
   controllers: [baseDir + '/controllers/*.{js,ts}'],
-  middlewares: [
-    CustomErrorHandler, // this should be always the last
-  ],
+  middlewares: [baseDir + '/middlewares/*.{js,ts}'],
   // class validator options
   validation: {
     whitelist: true,
