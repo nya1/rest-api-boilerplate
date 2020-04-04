@@ -503,6 +503,13 @@
   resolved "https://registry.yarnpkg.com/@types/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#1ee30d79544ca84d68d4b3cdb0af4f205663dd2d"
   integrity sha512-OCutwjDZ4aFS6PB1UZ988C4YgwlBHJd6wCeQqaLdmadZ/7e+w79+hbMUFC1QXDNCmdyoRfAFdm0RypzwR+Qpag==
 
+"@types/express-request-id@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@types/express-request-id/-/express-request-id-1.4.1.tgz#35988cbd21b3951b74235a0c840c2a72722c85d1"
+  integrity sha512-39g9HGiBJBjsSJZ80vYgkR4yvu7XVL2R/R/KezU/060gnW5e9btRP7d0R8QORzJ3/Uo7Sis36AM58KSQQOfgcw==
+  dependencies:
+    "@types/express-serve-static-core" "*"
+
 "@types/express-serve-static-core@*":
   version "4.17.3"
   resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.17.3.tgz#dc8068ee3e354d7fba69feb86b3dfeee49b10f09"
@@ -2069,6 +2076,13 @@ expect@^25.2.7:
     jest-matcher-utils "^25.2.7"
     jest-message-util "^25.2.6"
     jest-regex-util "^25.2.6"
+
+express-request-id@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/express-request-id/-/express-request-id-1.4.1.tgz#66feaf1f0be3deca13f3abfe1c098e49b12f2c28"
+  integrity sha512-qpxK6XhDYtdx9FvxwCHkUeZVWtkGbWR87hBAzGECfwYF/QQCPXEwwB2/9NGkOR1tT7/aLs9mma3CT0vjSzuZVw==
+  dependencies:
+    uuid "^3.3.2"
 
 express-winston@^4.0.3:
   version "4.0.3"

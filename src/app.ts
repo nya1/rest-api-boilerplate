@@ -4,6 +4,7 @@ import { authorizationChecker, currentUserChecker } from '@src/middlewares/autho
 import express from 'express';
 import helmet from 'helmet';
 import expressHttpLogger from 'express-winston';
+import expressRequestId from 'express-request-id';
 import { AppConfig } from './util/config';
 import { WinstonLoggerFactory } from './util/logger';
 
@@ -17,9 +18,14 @@ useContainer(AppIoC);
 // create express app
 const expressApp = express();
 
-// attach basic security middlewares
+// attach basic middlewares
 // helmet
 expressApp.use(helmet());
+
+// add request id to requests
+expressApp.use(
+  expressRequestId({ headerName: 'x-request-id', setHeader: true, attributeName: 'requestId' }),
+);
 
 // add winston logger
 const appConfig = AppIoC.get<AppConfig>(AppConfig);

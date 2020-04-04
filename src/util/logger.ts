@@ -1,7 +1,7 @@
 import { injectable, inject } from 'inversify';
 import { Logger as WinstonLogger, format, createLogger, transports } from 'winston';
-import { Request, Response } from 'express';
 import expressHttpLogger from 'express-winston';
+import { Response } from 'express';
 import { AppConfig } from './config';
 
 /**
@@ -76,11 +76,20 @@ export class WinstonLoggerFactory {
       headerBlacklist: ['x-api-key', 'authorization'], // hide auth headers
       bodyBlacklist: ['email', 'password'], // hide private data
       metaField: 'http', // where req and res objects are saved
-      responseWhitelist: ['statusCode', 'body'], // from response take status and body
+      responseWhitelist: ['statusCode', 'body'], // from response take status, body, header
       // dynamic level based on statusCode
-      level: (_req: Request, res: Response) => {
+      level: (_req, res) => {
         return res.statusCode !== 500 ? 'info' : 'error'; // count as error only 500s
       },
+      dynamicMeta: (_req, res: Response) => {
+        let requestId: string | undefined;
+        if (res.hasHeader('x-request-id')) {
+          requestId = res.getHeader('x-request-id') as string;
+        }
+        console.log(requestId);
+        return { requestId };
+      },
+      // you can also ignore entire routes with `ignoredRoutes: ['/todo']`
     };
 
     // merge to logger
