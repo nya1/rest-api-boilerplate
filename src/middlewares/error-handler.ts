@@ -31,7 +31,9 @@ export class CustomErrorHandler implements ExpressErrorMiddlewareInterface {
   ) {}
 
   error(error: HttpErrorWithValidation, request: Request, response: Response) {
-    this.logger.error('catched error', error);
+    const logLevel = error.httpCode === 500 ? 'error' : 'warn';
+    this.logger.log(logLevel, `${error.name} error`, { error, stack: error.stack });
+
     const jsonResponse: JsonErrorResponse = {
       success: false,
       message: error.message,
@@ -68,7 +70,6 @@ export class CustomErrorHandler implements ExpressErrorMiddlewareInterface {
       jsonResponse.stack = error.stack;
     }
 
-    this.logger.info(`response with status code ${statusCode}`, jsonResponse);
     response.status(statusCode).json(jsonResponse);
   }
 }

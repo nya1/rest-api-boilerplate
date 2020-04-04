@@ -3,7 +3,9 @@ import { AppContainer, AppIoC } from '@src/util/container';
 import { authorizationChecker, currentUserChecker } from '@src/middlewares/authorization';
 import express from 'express';
 import helmet from 'helmet';
+import expressHttpLogger from 'express-winston';
 import { AppConfig } from './util/config';
+import { WinstonLoggerFactory } from './util/logger';
 
 // create new app container and bind all utils, controllers, middlewares
 const appContainer = new AppContainer();
@@ -19,10 +21,13 @@ const expressApp = express();
 // helmet
 expressApp.use(helmet());
 
+// add winston logger
+const appConfig = AppIoC.get<AppConfig>(AppConfig);
+const expressWinstonLogger = new WinstonLoggerFactory(appConfig);
+expressApp.use(expressHttpLogger.logger(expressWinstonLogger.getRequestLogger()));
+
 // base directory to load all files
 const baseDir = __dirname;
-
-const appConfig = AppIoC.get<AppConfig>(AppConfig);
 
 // routing-controllers options
 const routePrefix: string | undefined = appConfig.has('app.routePrefix')

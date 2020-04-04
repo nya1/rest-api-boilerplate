@@ -1155,7 +1155,7 @@ caseless@~0.12.0:
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
 
-chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0:
+chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.4.1:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
   integrity sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==
@@ -2069,6 +2069,14 @@ expect@^25.2.7:
     jest-matcher-utils "^25.2.7"
     jest-message-util "^25.2.6"
     jest-regex-util "^25.2.6"
+
+express-winston@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/express-winston/-/express-winston-4.0.3.tgz#7160ddc6eb8efaa1bfc95a246124b05286096699"
+  integrity sha512-qzLLaTYAhajzfbR1d/hKT+N4kEoqDXC9wBqth0ygPg+DrM4QRipXDHLkIkaKSeiQ1L/ulezrT+T7lrKS+OcT7g==
+  dependencies:
+    chalk "^2.4.1"
+    lodash "^4.17.15"
 
 express@^4.17.1:
   version "4.17.1"

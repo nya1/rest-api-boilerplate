@@ -1,12 +1,14 @@
 import { injectable, inject } from 'inversify';
 import { Logger as WinstonLogger, format, createLogger, transports } from 'winston';
+import { Request, Response } from 'express';
+import expressHttpLogger from 'express-winston';
 import { AppConfig } from './config';
 
 /**
  * factory class for winston logger
  * it can be extended with multiple transports
  */
-class WinstonLoggerFactory {
+export class WinstonLoggerFactory {
   private appName: string;
   private version: string;
   private currentEnv: string;
@@ -23,14 +25,18 @@ class WinstonLoggerFactory {
     this.currentEnv = this.config.env;
   }
 
+  get defaultMetadata() {
+    return {
+      service: this.appName,
+      'tag:env': this.currentEnv,
+      'tag:version': this.version,
+    };
+  }
+
   public createLogger(innerLabel: string | undefined) {
     const loggerInstance = createLogger({
       // default metadata, can be easily indexed
-      defaultMeta: {
-        service: this.appName,
-        'tag:env': this.currentEnv,
-        'tag:version': this.version,
-      },
+      defaultMeta: this.defaultMetadata,
       format: format.json(),
       transports: [],
     });
@@ -58,6 +64,30 @@ class WinstonLoggerFactory {
   }
 
   /**
+   * customize logger to be used in express logging
+   */
+  public getRequestLogger() {
+    const winstonInstance = this.createLogger('http'); // http label
+
+    // set express-winston custom options
+    const expressWinstonOpts: expressHttpLogger.LoggerOptionsWithWinstonInstance = {
+      winstonInstance,
+      baseMeta: this.defaultMetadata, // re-use default metadata as base
+      headerBlacklist: ['x-api-key', 'authorization'], // hide auth headers
+      bodyBlacklist: ['email', 'password'], // hide private data
+      metaField: 'http', // where req and res objects are saved
+      responseWhitelist: ['statusCode', 'body'], // from response take status and body
+      // dynamic level based on statusCode
+      level: (_req: Request, res: Response) => {
+        return res.statusCode !== 500 ? 'info' : 'error'; // count as error only 500s
+      },
+    };
+
+    // merge to logger
+    return expressWinstonOpts;
+  }
+
+  /**
    * winston formatter for local use (will print to console)
    */
   private localFormat() {
@@ -66,7 +96,7 @@ class WinstonLoggerFactory {
         info.level
       }: ${info.message} ${
         info.meta && info.meta.length ? JSON.stringify(info.meta, null, 2) : ''
-      }`;
+      } ${info.http ? '\n' + JSON.stringify(info.http, null, 2) : ''}`;
     });
   }
 }
