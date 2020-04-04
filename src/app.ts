@@ -5,6 +5,7 @@ import express from 'express';
 import helmet from 'helmet';
 import expressHttpLogger from 'express-winston';
 import expressRequestId from 'express-request-id';
+import preventPollutionQuery from 'hpp';
 import { AppConfig } from './util/config';
 import { WinstonLoggerFactory } from './util/logger';
 
@@ -22,10 +23,13 @@ const expressApp = express();
 // helmet
 expressApp.use(helmet());
 
-// add request id to requests
+// add `x-request-id` id to every request/response, useful for log correlation
 expressApp.use(
   expressRequestId({ headerName: 'x-request-id', setHeader: true, attributeName: 'requestId' }),
 );
+
+// prevent pollution attacks on query params
+expressApp.use(preventPollutionQuery({ checkBody: false }));
 
 // add winston logger
 const appConfig = AppIoC.get<AppConfig>(AppConfig);
