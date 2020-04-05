@@ -28,8 +28,8 @@ export class WinstonLoggerFactory {
   get defaultMetadata() {
     return {
       service: this.appName,
-      'tag:env': this.currentEnv,
-      'tag:version': this.version,
+      'tag.env': this.currentEnv,
+      'tag.version': this.version,
     };
   }
 
