@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "required": [
+      "app"
+  ],
+  "properties": {
+      "app": {
+          "$id": "#/properties/app",
+          "type": "object",
+          "required": [
+              "port",
+              "name"
+          ],
+          "properties": {
+              "port": {
+                  "$id": "#/properties/app/properties/port",
+                  "type": "integer"
+              },
+              "name": {
+                  "$id": "#/properties/app/properties/name",
+                  "type": "string"
+              }
+          }
+      }
+  }
+}

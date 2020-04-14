@@ -1,0 +1,27 @@
+service:
+  name: test-rest-api-sample
+
+package:
+  excludeDevDependencies: true
+  exclude:
+    - ./src
+    - ./test
+    - ./deploy
+    - ./config
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: eu-west-3
+  memorySize: 512
+  timeout: 10
+  environment:
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1  
+
+functions:
+  app:
+    handler: dist/src/lambda.handler
+    events:
+      - http: "ANY /{proxy+}"
+    environment:
+      NODE_CONFIG: ${env:NODE_CONFIG}

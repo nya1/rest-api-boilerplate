@@ -22,6 +22,7 @@ Basic rest api setup to quickly bootstrap a project based on TypeScript and popu
   * Configuration via TOML files (using [node-config](https://github.com/lorenwest/node-config))
   * Automatically reloads the server if a file changes while developing
   * Flexibile logging with winston
+  * ~~Optional~~ deployment setup via Serverless (AWS) as a Lambda
 
 
 The goal of this project is to provide a simple, easy to use base to build new rest apis.
