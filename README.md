@@ -101,7 +101,7 @@ By default serverless (aws provider) is used, the api will be deployed as one la
 
 Stage can be appended i.e. `yarn deploy --stage production`
 
-**note** remember to set `NODE_CONFIG` with your json config, e.g. `{"app":{"port":3000}}` this will be loaded instead of config directory (where you don't want to store sensitive data)
+**note** remember to set the env variable `$NODE_CONFIG` with your json config, e.g. `{"app":{"port":3000}}` this will be loaded instead of config directory (where you don't want to store sensitive data)
 
 ---
 
