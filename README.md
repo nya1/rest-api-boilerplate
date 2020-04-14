@@ -91,7 +91,17 @@ Will run eslint with prettier
 
 `yarn openapi:generate`
 
-Will generate open api spec file in the root directory `openapi.spec.json` 
+Will generate open api spec file in the root directory `openapi.spec.json`
+
+### Deploy
+
+By default serverless (aws provider) is used, the api will be deployed as one lambda function.
+
+`yarn deploy`
+
+Stage can be appended i.e. `yarn deploy --stage production`
+
+**note** remember to set `NODE_CONFIG` with your json config, e.g. `{"app":{"port":3000}}` this will be loaded instead of config directory (where you don't want to store sensitive data)
 
 ---
 
