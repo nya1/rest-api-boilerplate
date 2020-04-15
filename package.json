@@ -78,7 +78,7 @@
     "open-cli": "^6.0.1",
     "prettier": "^2.0.4",
     "serverless": "^1.67.3",
-    "start-server-and-test": "^1.10.11",
+    "start-server-and-test": "^1.11.0",
     "supertest": "^4.0.2",
     "syncyarnlock": "^1.0.19",
     "ts-jest": "^25.3.1",
