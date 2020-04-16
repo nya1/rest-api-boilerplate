@@ -12,3 +12,5 @@ echo "NODE_CONFIG is valid"
 
 # run serverless deploy, this step can be changed with your devops setup
 yarn serverless deploy -c deploy/serverless.yaml --force
+
+# here you can ping the url
