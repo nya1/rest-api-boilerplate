@@ -30,12 +30,6 @@ The goal of this project is to provide a simple, easy to use base to build new r
 
 ## Documentation
 
- * Create controllers, middlewares, request/response: https://github.com/typestack/routing-controllers#readme
-
- * Configuration https://github.com/lorenwest/node-config/wiki
-
-## Documentation
-
  * [Controllers, Middlewares, Services](src/README.md#request-response)
  * [Configuration](config/README.md)
  * [Development](src/README.md#development)
