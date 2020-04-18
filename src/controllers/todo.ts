@@ -10,7 +10,7 @@ import {
 import { injectable, inject, named } from 'inversify';
 import { AppLogger } from '@src/util/logger';
 import { TodoService } from '@src/services/todo';
-import { TodoNewRequest } from '@src/entities/todo';
+import { TodoNewRequest } from '@src/requests/todo';
 import { ResponseSchema } from 'routing-controllers-openapi';
 import { Todo } from '@src/models/todo';
 

@@ -2,8 +2,8 @@
 
 Using routing-controllers module (with express), see readme: https://github.com/typestack/routing-controllers#readme
 
- * Entities files (folder `entities`) are used to rapresent what data we expect from POST/PUT body requests
- * Models files (folder `models`) are used to describe the internal data structure that is present on database
+ * Request files (folder `requests`) are used to rapresent what data we expect from POST/PUT body requests
+ * Models files (folder `models`) are used to describe the database data schema
 
 # Development 
 

@@ -2,7 +2,7 @@ import { inject, named, injectable } from 'inversify';
 import { AppLogger } from '@src/util/logger';
 import { BadRequestError } from 'routing-controllers';
 import { Todo } from '@src/models/todo';
-import { TodoNewRequest } from '@src/entities/todo';
+import { TodoNewRequest } from '@src/requests/todo';
 
 /**
  * service class for Todo operations

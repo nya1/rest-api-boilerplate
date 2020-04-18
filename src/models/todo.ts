@@ -1,5 +1,5 @@
 import { plainToClass } from 'class-transformer';
-import { TodoNewRequest } from '@src/entities/todo';
+import { TodoNewRequest } from '@src/requests/todo';
 import { IsString } from 'class-validator';
 
 /**
