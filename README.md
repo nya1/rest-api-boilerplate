@@ -22,6 +22,7 @@ Basic rest api setup to quickly bootstrap a project based on TypeScript and popu
   * Configuration via TOML files (using [node-config](https://github.com/lorenwest/node-config))
   * Automatically reloads the server if a file changes while developing
   * Flexibile logging with winston
+  * Validate configuration before deployment against a json schema
   * *Optional* deployment setup via Serverless (AWS) as a Lambda
 
 
@@ -33,13 +34,15 @@ The goal of this project is to provide a simple, easy to use base to build new r
 
  * Configuration https://github.com/lorenwest/node-config/wiki
 
+## Documentation
 
-## Configuration
+ * [Controllers, Middlewares, Services](src/README.md#request-response)
+ * [Configuration](config/README.md)
+ * [Development](src/README.md#development)
+ * [Testing](test/README.md)
+ * [Deployment](deploy/README.md)
 
-By default [TOML](https://github.com/toml-lang/toml#example) is used and the configuration is located here: [`config/NODE_ENV.toml`](config/development.toml)
-
-
-### Install
+## Getting started
 
 Clone this repository
 
@@ -49,65 +52,9 @@ Install
 
 `cd my-api-project && yarn install`
 
-### Start local (dev) server
-
-`yarn dev`
-
-Will start the api on localhost (port changes based on config), it will automatically restart the server if a file changes.
-
-### Test
-
-`yarn test`
-
-Will run unit and integration tests (typescript)
-
-`yarn test:ci`
-
-Will run unit and integration tests against typescript and compiled javascript server
-
-`yarn test:coverage`
-
-Will run unit and integration tests (typescript) and open the default browser with the HTML coverage reporter
-
-`yarn test:unit`
-
-Run only unit tests (typescript)
-
-`yarn test:integration`
-
-Run only integration tests (typescript)
-
-`yarn test:integration:js`
-
-Run integration tests against compiled javascript server
-
-### Linting
-
-`yarn lint`
-
-Will run eslint with prettier
-
-### Generate open api spec file
-
-`yarn openapi:generate`
-
-Will generate open api spec file in the root directory `openapi.spec.json`
-
-### Deploy
-
-By default serverless (aws provider) is used, the api will be deployed as one lambda function.
-
-`yarn deploy`
-
-Stage can be appended i.e. `yarn deploy --stage production`
-
-**note** remember to set the env variable `$NODE_CONFIG` with your json config, e.g. `{"app":{"port":3000}}` this will be loaded instead of config directory (where you don't want to store sensitive data)
-
-Code is independent from serverless/cloud providers and can be run via docker or standalone.
-
 ---
 
-Using the following prod modules
+Using the following modules
 
  * [routing-controllers](https://github.com/typestack/routing-controllers)
 
