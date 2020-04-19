@@ -86,7 +86,6 @@ export class WinstonLoggerFactory {
         if (res.hasHeader('x-request-id')) {
           requestId = res.getHeader('x-request-id') as string;
         }
-        console.log(requestId);
         return { requestId };
       },
       // you can also ignore entire routes with `ignoredRoutes: ['/todo']`
