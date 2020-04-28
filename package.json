@@ -61,7 +61,7 @@
     "@types/helmet": "^0.0.45",
     "@types/hpp": "^0.2.1",
     "@types/jest": "^25.2.1",
-    "@types/node": "^13.13.2",
+    "@types/node": "^13.13.4",
     "@types/supertest": "^2.0.8",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",
