@@ -77,7 +77,7 @@
     "nodemon": "^2.0.3",
     "open-cli": "^6.0.1",
     "prettier": "^2.0.5",
-    "serverless": "^1.68.0",
+    "serverless": "^1.69.0",
     "start-server-and-test": "^1.11.0",
     "supertest": "^4.0.2",
     "syncyarnlock": "^1.0.19",
