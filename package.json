@@ -58,7 +58,7 @@
     "@types/config": "^0.0.36",
     "@types/express": "^4.17.6",
     "@types/express-request-id": "^1.4.1",
-    "@types/helmet": "^0.0.45",
+    "@types/helmet": "^0.0.46",
     "@types/hpp": "^0.2.1",
     "@types/jest": "^25.2.1",
     "@types/node": "^13.13.4",
