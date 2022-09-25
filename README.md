@@ -1,4 +1,8 @@
 
+# Template updated, visit https://github.com/nya1/ts-api-boilerplate
+
+---
+
 # TypeScript REST API Sample
 
 <p align="center">
