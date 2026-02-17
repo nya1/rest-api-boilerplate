@@ -38,7 +38,7 @@
   "dependencies": {
     "aws-serverless-express": "^3.3.8",
     "class-transformer": "^0.3.1",
-    "class-validator": "0.10.1",
+    "class-validator": "0.14.0",
     "config": "^3.3.1",
     "cors": "^2.8.5",
     "express": "^4.22.0",
