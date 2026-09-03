@@ -51,7 +51,7 @@
     "reflect-metadata": "^0.1.13",
     "routing-controllers": "^0.8.1",
     "routing-controllers-openapi": "^1.8.1",
-    "toml": "^3.0.0",
+    "toml": "^5.0.0",
     "winston": "^3.3.3"
   },
   "devDependencies": {
